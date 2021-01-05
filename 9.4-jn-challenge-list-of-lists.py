@@ -8,9 +8,8 @@ universities = [
     ['Yale', 11701, 40500],
 ]
 
-name = 0
-num_students = 1
-tuition_fees = 3
+num_students = 0
+tuition_fees = 1
 
 def enrollment_stats(unis):
     num_enrolled = [uni[1] for uni in unis]
@@ -19,10 +18,28 @@ def enrollment_stats(unis):
     return to_return
 
 def mean(arg):
-    total = sum([arg])
-    mean = total / (len(arg) + 1)
+    total = sum(arg)
+    mean = total / len(arg)
     return mean
 
-print(mean(enrollment_stats(universities)[1]))
+def median(arg):
+    sorted_arg = arg.sort()
+    if len(arg) % 2 == 0:
+        median_value = sum(arg[int(len(arg)/2)-1:int(len(arg)/2)+1]) / 2
+    else:
+        median_value = arg[int(len(arg)/2)]
+    return median_value
+    
+    
+
+list_students = enrollment_stats(universities)[num_students]
+list_tuition_fees = enrollment_stats(universities)[tuition_fees]
+
+print(f"{sum(list_students):,}")
+print(f"{sum(list_tuition_fees):,}")
+print(f"{mean(list_students):,}")
+print(median(list_students))
+print(mean(list_tuition_fees))
+print(median(list_tuition_fees))
 
 # def median(arg):
